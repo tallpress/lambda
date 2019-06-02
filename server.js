@@ -16,7 +16,13 @@ app.get('/', function(req, res){
 
 validateRequest = validator.calculate;
 app.post('/calculate', expressJoi(validateRequest), async(req, res) => {
-    lambdaResponse = await lambdaGateway.geneticAlgo();
+    let body = req.body;
+    lambdaResponse = await lambdaGateway.geneticAlgo(
+        body.target,
+        body.population_size,
+        body.mutation_rate,
+        body.epochs
+    );
     res.json(lambdaResponse);
 });
 

@@ -16,9 +16,15 @@ const invokeLambdaFunction = (lambdaInstance, params) => new Promise((resolve, r
 });
 
 module.exports = {
-    geneticAlgo: async() => {
+    geneticAlgo: async(target, populationSize, mutationRate, epochs) => {
         var params = {
             FunctionName: 'geneticAlgo',
+            Payload: JSON.stringify({
+                target: target,
+                population_size: populationSize,
+                mutation_rate: mutationRate,
+                epochs: epochs,
+            })
         };
         const result = await invokeLambdaFunction(awsLambda, params);
         console.log(result)
