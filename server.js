@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
-require('dotenv').config()
-const validator = require('./helpers/requestValidation');
+const expressJoi = require('express-joi-validator');
+const validator = require('./helpers/validationSchemas')
+require('dotenv').config();
 
 var app = express();
 app.use(express.json());
@@ -11,10 +12,9 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-validateRequest = validator.validate
-
-app.post('/', validateRequest, function(req, res){
-    res.json(req.body)
+validateRequest = validator.calculate;
+app.post('/calculate', expressJoi(validateRequest), function(req, res) {
+    res.json(req.body);
 });
 
 var port = process.env.APPLICATION_PORT
