@@ -22,6 +22,6 @@ module.exports = {
                 epochs: epochs,
             })
         };
-        return await invokeLambdaFunction(awsLambda, params);;
+        return await invokeLambdaFunction(awsLambda, params);
     },
 }
