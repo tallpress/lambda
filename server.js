@@ -1,31 +1,18 @@
 require('dotenv').config();
 const express = require('express'),
     path = require('path'),
-    expressJoi = require('express-joi-validator'),
-    validator = require('./helpers/validationSchemas'),
-    lambdaGateway = require('./gateways/lambda');
+    calculateRoutes = require('./routers/calculate');
 
-var app = express();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/calculate', calculateRoutes);
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-validateRequest = validator.calculate;
-app.post('/calculate', expressJoi(validateRequest), async(req, res) => {
-    let body = req.body;
-    lambdaResponse = await lambdaGateway.geneticAlgo(
-        body.target,
-        body.population_size,
-        body.mutation_rate,
-        body.epochs
-    );
-    res.json(lambdaResponse);
-});
-
-var port = process.env.APPLICATION_PORT
+const port = process.env.APPLICATION_PORT
 app.listen(port);
 console.log(`Application is running on http://localhost:${port}`)

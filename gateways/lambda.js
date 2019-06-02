@@ -1,9 +1,5 @@
 const aws = require('aws-sdk');
-var awsLambda = new aws.Lambda();
-
-awsLambda.config.update({
-    'region': process.env.AWS_REGION
-});
+const awsLambda = new aws.Lambda();
 
 const invokeLambdaFunction = (lambdaInstance, params) => new Promise((resolve, reject) => {
     lambdaInstance.invoke(params, (error, data) => {
@@ -17,7 +13,7 @@ const invokeLambdaFunction = (lambdaInstance, params) => new Promise((resolve, r
 
 module.exports = {
     geneticAlgo: async(target, populationSize, mutationRate, epochs) => {
-        var params = {
+        const params = {
             FunctionName: 'geneticAlgo',
             Payload: JSON.stringify({
                 target: target,
@@ -26,8 +22,6 @@ module.exports = {
                 epochs: epochs,
             })
         };
-        const result = await invokeLambdaFunction(awsLambda, params);
-        console.log(result)
-        return result;
+        return await invokeLambdaFunction(awsLambda, params);;
     },
 }
