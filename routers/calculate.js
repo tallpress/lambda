@@ -24,7 +24,9 @@ router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) 
         body.target,
         body.population_size,
         body.mutation_rate,
-        body.epochs
+        body.epochs,
+        body.good_samples_size,
+        body.random_sample_size
     ).then((response) => handleResponse(response))
     .catch((error) => {
         const status = 500;
