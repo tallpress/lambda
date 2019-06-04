@@ -2,3 +2,4 @@
 node_modules/
 client/
 *.zip
+.DS_Store

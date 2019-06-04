@@ -5,7 +5,7 @@ from src.genetic_algo import GeneticAlgo
 def lambda_handler(event, context):
     target = event['target']
     mutation_rate = event['mutation_rate']
-    population = event['population_size']
+    population_size = event['population_size']
     epochs = event['epochs']
     random_sample_size = event['random_sample_size']
     good_sample_size = event['random_sample_size']
