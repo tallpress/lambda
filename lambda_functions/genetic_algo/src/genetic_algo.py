@@ -3,13 +3,20 @@ from spawner import Spawner
 import random
 
 class GeneticAlgo(object):
-    def __init__(self, population_size, mutation_rate, target, good_sample_size, random_sample_size):
+    def __init__(self,
+        population_size,
+        mutation_rate,
+        target,
+        good_sample_size,
+        random_sample_size,
+        spawner=None,
+    ):
         self.mutation_rate = mutation_rate
         self.population_size = population_size
         self.target = target
         self.good_sample_size = good_sample_size
         self.random_sample_size = random_sample_size
-        self.spawner = Spawner()
+        self.spawner = Spawner() if spawner is None else spawner
 
     def get_next_generation(self, generation):
         scored_generation = generation.score(self.target)
