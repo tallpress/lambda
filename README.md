@@ -28,7 +28,7 @@ Run `yarn && npm start-dev`
 
 ---
 
-######POST /calculate/genetic-algorithm
+###### POST /calculate/genetic-algorithm
 Body:
 - **target** (string) the target word the algorithm is working towards.
 - **population_size** (int) size of population in a generation
