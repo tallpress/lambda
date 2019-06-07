@@ -1,8 +1,8 @@
 # Lambda Genetic Algorithm with Node.js backend
 
-First time using Node.js and building AWS lambda functions. Aim was to get to grips with the basics of Node.js and building lambda functions, which I did so by building a lambda function that is called from a Node.js backend. The endpoint has validation on to minimise sending faulty requests to the lambda.
+First time using Node.js and building AWS lambda functions. Aim was to get to grips with the basics of Node.js and building lambda functions, which I did so by building a lambda function that is called from a Node.js backend. Also aimed to make a genetic algo, I wrote a while ago, a bit more OOP in the process of putting it up on lambda. The endpoint has validation on to minimise sending faulty requests to the lambda.
 
-Next steps: build react front-end to make interacting with the lambda a bit nicer.
+Next steps: build react front-end to make interacting with the lambda a bit nicer. Add unit tests.
 
 ----
 
