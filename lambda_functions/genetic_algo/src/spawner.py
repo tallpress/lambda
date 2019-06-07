@@ -6,7 +6,6 @@ from individual import Individual
 class Spawner(object):
     def __init__(self):
         self.available_genes = string.ascii_letters
-        pass
 
     def spawn_generation(self, target_gene, population_size):
         population = []
