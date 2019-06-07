@@ -1,8 +1,0 @@
-version: "3"
-services:
-    test_lambda:
-        build: docker
-        volumes:
-            - ./lambda_functions:/usr/src
-        command: "bash -c 'cd /usr/src && python genetic_algo/test.py'"
-        network_mode: bridge

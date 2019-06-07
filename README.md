@@ -4,7 +4,18 @@ First time using Node.js and building AWS lambda functions. Aim was to get to gr
 
 I've played around with spinning up a python 2.7 docker container to run unit tests in, in order to simulate the lambda environment in which the python code is ran. Note, wip and very much rough round the edges. To run tests, `make test`
 
-Next steps: add more unit tests and improve the system. Build react front-end to make interacting with the lambda a bit nicer.
+Next steps: add more unit tests and improve the testing set up. Build react front-end to make interacting with the lambda a bit nicer.
+
+----
+
+
+### Project structure
+
+__app__: contains node.js application
+
+__docker__: contains docker related files for testing the lambda function
+
+__lambda_functions__: contains lambdas, can deploy to aws from the dict
 
 ----
 
@@ -23,7 +34,7 @@ AWS_REGION=
 ```
 You will need the aws creds
 
-Run `yarn && npm start-dev`
+Run `make build && make start`
 
 
 ---
@@ -53,6 +64,7 @@ good_sample_size:4
 ### To deploy to lambda
 
 `cd lambda_functions`
+
 `bash publish_lambda.sh <LAMBDA_FUNC_DICT>`
 
 

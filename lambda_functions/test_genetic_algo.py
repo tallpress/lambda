@@ -1,5 +1,5 @@
 import unittest
-from src.individual import Individual
+from genetic_algo.src.individual import Individual
 
 class TestIndividual(unittest.TestCase):
     def test_display_returns_genes(self):
