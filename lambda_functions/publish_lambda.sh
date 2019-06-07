@@ -8,4 +8,4 @@ zip -r ${function_name}.zip .
 chmod 777 $(pwd)/${function_name}.zip
 
 cd ..
-aws lambda update-function-code --function-name geneticAlgo --zip-file fileb://$(pwd)/${function_name}/${function_name}.zip
+aws lambda update-function-code --function-name ${function_name} --zip-file fileb://$(pwd)/${function_name}/${function_name}.zip
