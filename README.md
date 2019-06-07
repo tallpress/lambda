@@ -2,7 +2,9 @@
 
 First time using Node.js and building AWS lambda functions. Aim was to get to grips with the basics of Node.js and building lambda functions, which I did so by building a lambda function that is called from a Node.js backend. Also aimed to make a genetic algo, I wrote a while ago, a bit more OOP in the process of putting it up on lambda. The endpoint has validation on to minimise sending faulty requests to the lambda.
 
-Next steps: build react front-end to make interacting with the lambda a bit nicer. Add unit tests.
+I've played around with spinning up a python 2.7 docker container to run unit tests in, in order to simulate the lambda environment in which the python code is ran. Note, wip and very much rough round the edges. To run tests, `make test`
+
+Next steps: add more unit tests and improve the system. Build react front-end to make interacting with the lambda a bit nicer.
 
 ----
 
@@ -52,3 +54,10 @@ good_sample_size:4
 
 `cd lambda_functions`
 `bash publish_lambda.sh <LAMBDA_FUNC_DICT>`
+
+
+---
+
+### To run tests
+
+`make test`
