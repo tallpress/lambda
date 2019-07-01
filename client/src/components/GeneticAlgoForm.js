@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import axios from 'axios';
+
 class GeneticAlgoForm extends Component {
     constructor(props) {
         super(props)
@@ -24,21 +26,21 @@ class GeneticAlgoForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        const formResult = JSON.stringify({
+        const formResult = {
             target: this.state.target,
-            mutationRate: this.state.mutationRateSlider,
-            populationSize: this.state.populationSize,
-            goodSampleSize: this.state.goodSampleSize,
-            randomSampleSize: this.state.randomSampleSize,
+            mutation_rate: this.state.mutationRateSlider,
+            population_size: this.state.populationSize,
+            good_sample_size: this.state.goodSampleSize,
+            random_sample_size: this.state.randomSampleSize,
             epochs: this.state.epochs,
-        })
+        }
+        axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult).then(data => console.log(data));
         console.log(formResult)
     }
 
     render() {
         return (
             <div className="form">
-                <h3>Genetic algorithm</h3>
                 <form className="form-group" onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="target">Target</label>
@@ -104,7 +106,7 @@ class GeneticAlgoForm extends Component {
                             onChange={this.handleInputChange}
                         ></input>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary form-control">Mutate</button>
                 </form>
             </div>
         );

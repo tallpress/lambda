@@ -18,6 +18,8 @@ router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) 
         body.random_sample_size
     ).then((response) => async (response) => {
         const responseBody = JSON.parse(response.Payload).body;
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json({
             status: response.StatusCode,
             response: {
