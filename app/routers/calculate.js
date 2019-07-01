@@ -8,7 +8,6 @@ const validateRequest = validationSchema.genetic_algorithm;
 
 router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) => {
     const body = req.body;
-
     await lambdaGateway.geneticAlgo(
         body.target,
         body.population_size,
@@ -16,7 +15,7 @@ router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) 
         body.epochs,
         body.good_samples_size,
         body.random_sample_size
-    ).then((response) => async (response) => {
+    ).then(async (response) => {
         const responseBody = JSON.parse(response.Payload).body;
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

@@ -34,8 +34,8 @@ class GeneticAlgoForm extends Component {
             random_sample_size: this.state.randomSampleSize,
             epochs: this.state.epochs,
         }
-        axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult).then(data => console.log(data));
-        console.log(formResult)
+        axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult)
+        .then(data => console.log(data.data));
     }
 
     render() {
