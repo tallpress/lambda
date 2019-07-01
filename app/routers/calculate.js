@@ -9,7 +9,14 @@ const validateRequest = validationSchema.genetic_algorithm;
 router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) => {
     const body = req.body;
 
-    const handleResponse = async (response) => {
+    await lambdaGateway.geneticAlgo(
+        body.target,
+        body.population_size,
+        body.mutation_rate,
+        body.epochs,
+        body.good_samples_size,
+        body.random_sample_size
+    ).then((response) => async (response) => {
         const responseBody = JSON.parse(response.Payload).body;
         res.json({
             status: response.StatusCode,
@@ -18,16 +25,7 @@ router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) 
                 algorithm_output: responseBody.result
             },
         })
-    }
-
-    await lambdaGateway.geneticAlgo(
-        body.target,
-        body.population_size,
-        body.mutation_rate,
-        body.epochs,
-        body.good_samples_size,
-        body.random_sample_size
-    ).then((response) => handleResponse(response))
+    })
     .catch((error) => {
         const status = 500;
         res.status(status).json({status: status, message: error.message});
