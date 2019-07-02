@@ -13,6 +13,7 @@ class GeneticAlgoForm extends Component {
             epochs: null,
             formResult: null,
         }
+        this.submissionHandler = this.props.submissionHandler.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -35,11 +36,11 @@ class GeneticAlgoForm extends Component {
             epochs: this.state.epochs,
         }
         axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult)
-        .then(data =>
-            // this.setState({
-            //     formResult: data
-            // }),
-            console.log(data)
+        .then(response => {
+                let results = [];
+                results.push(response.data.response)
+                return this.props.submissionHandler(results)
+            }
         );
     }
 
@@ -57,8 +58,7 @@ class GeneticAlgoForm extends Component {
                         ></input>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="mutationRate">Mutation rate</label>
-                        <p>{this.state.mutationRateSlider}</p>
+                        <label htmlFor="mutationRate">Mutation rate: {this.state.mutationRateSlider}</label>
                         <input
                             className="form-control"
                             name="mutationRateSlider"

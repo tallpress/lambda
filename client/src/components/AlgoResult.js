@@ -5,7 +5,7 @@ class AlgoResult extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: [
+            mockResults: [
                 {
                     correct_percentage: 0.1,
                     results: ['adlsfj', 'asdadsadadasd']
@@ -14,7 +14,8 @@ class AlgoResult extends Component {
                     correct_percentage: 0.1,
                     results: ['adlsfj', 'kasdfjldsa']
                 }
-            ]
+            ],
+            results: this.props.data,
         }
     }
 
@@ -24,9 +25,10 @@ class AlgoResult extends Component {
                 <h4>Your results</h4>
                 {this.state.results.map((result, index) => {
                     return (<EpochResult
+                        key={index+1}
                         index={index+1}
-                        correct_percentage={result.correct_percentage}
-                        results={result.results}
+                        correct_percentage={result.percent_correct}
+                        results={result.algorithm_output}
                     />)
                 })}
             </div>

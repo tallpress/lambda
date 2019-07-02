@@ -18,7 +18,7 @@ class EpochResult extends Component {
     }
 
     formatResults(array) {
-        return array.join(', ')
+        return JSON.parse(array).join(', ')
     }
 
     displayResults() {
