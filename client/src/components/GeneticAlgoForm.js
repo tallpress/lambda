@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
 
 class GeneticAlgoForm extends Component {
@@ -12,6 +11,7 @@ class GeneticAlgoForm extends Component {
             goodSampleSize: null,
             randomSampleSize: null,
             epochs: null,
+            formResult: null,
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -35,7 +35,12 @@ class GeneticAlgoForm extends Component {
             epochs: this.state.epochs,
         }
         axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult)
-        .then(data => console.log(data.data));
+        .then(data =>
+            // this.setState({
+            //     formResult: data
+            // }),
+            console.log(data)
+        );
     }
 
     render() {
