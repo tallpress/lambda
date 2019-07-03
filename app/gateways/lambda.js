@@ -13,7 +13,7 @@ const invokeLambdaFunction = (lambdaInstance, params) => new Promise((resolve, r
 
 module.exports = {
     geneticAlgo:
-        async(target, populationSize, mutationRate, epochs, good_samples_size, random_sample_size) => {
+        async(target, populationSize, mutationRate, epochs, good_sample_size, random_sample_size) => {
             const params = {
                 FunctionName: 'geneticAlgo',
                 Payload: JSON.stringify({
@@ -21,7 +21,7 @@ module.exports = {
                     population_size: populationSize,
                     mutation_rate: mutationRate,
                     epochs: epochs,
-                    good_samples_size: good_samples_size,
+                    good_sample_size: good_sample_size,
                     random_sample_size: random_sample_size
                 })
             };
