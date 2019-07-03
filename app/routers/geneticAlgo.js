@@ -6,17 +6,38 @@ const express = require('express'),
 const router = express.Router();
 
 router.post('/epoch/format', async (req, res) => {
-    let toFormatArg = req.body.to_format
-    var frequencies = {};
-    toFormatArg.forEach(string => {
-        frequencies[string] ? frequencies[string]++ : frequencies[string] = 1
-    });
+    // let toFormatArg = req.body.to_format
 
+    // var frequencies = {};
+    // toFormatArg.forEach(string => {
+    //     frequencies[string] ? frequencies[string]++ : frequencies[string] = 1
+    // });
 
+    // var arrayOfFreqs = [];
+    // for (var freq in frequencies) {
+    //     let obj = {
+    //         string: freq,
+    //         count: frequencies[freq]
+    //     }
+    //     arrayOfFreqs.push(obj)
+    // }
+
+    // var resultArray = [];
+    // arrayOfFreqs.forEach(freqObj => {
+    //     if (resultArray[freqObj.count]) {
+    //         resultArray[freqObj.count].push(freqObj.string)
+    //     } else {
+    //         resultArray[freqObj.count] = [freqObj.string]
+    //     }
+    // });
+    const resultArray = [
+        {count: 1, values: ['fdasfd', 'fdafdas']},
+        {count: 2, values: ['fdasfvczv', 'fdaadfasfdas']},
+    ]
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.json({
-        frequencies: frequencies
+        frequencies: resultArray
     });
     return
 });
