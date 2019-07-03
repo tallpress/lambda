@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GeneticAlgoForm from './components/GeneticAlgoForm'
 import AlgoResult from './components/AlgoResult'
+import ErrorMessage from './components/ErrorMessage'
 
 class App extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class App extends Component {
             : '';
 
         const errorMessage = (this.state.formError)
-            ? <div className="alert alert-danger" role="alert">An error occoured, try again</div>
+            ? <ErrorMessage />
             : '';
 
         return (

@@ -1,12 +1,28 @@
 const express = require('express'),
-    validationSchema = require('./helpers/validationSchemas').calculate,
+    validationSchema = require('./helpers/validationSchemas').genetic_algorithm,
     lambdaGateway = require('../gateways/lambda'),
     expressJoi = require('express-joi-validator');
 
 const router = express.Router();
-const validateRequest = validationSchema.genetic_algorithm;
 
-router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) => {
+router.post('/epoch/format', async (req, res) => {
+    let toFormatArg = req.body.to_format
+    var frequencies = {};
+    toFormatArg.forEach(string => {
+        frequencies[string] ? frequencies[string]++ : frequencies[string] = 1
+    });
+
+
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.json({
+        frequencies: frequencies
+    });
+    return
+});
+
+const validateCalculate = validationSchema.calculate;
+router.post('/calculate', expressJoi(validateCalculate), async (req, res) => {
     response = [{
         correct_percentage: 0,
         result:
@@ -243,10 +259,10 @@ router.post('/genetic-algorithm', expressJoi(validateRequest), async (req, res) 
             },
         })
     })
-    .catch((error) => {
-        const status = 500;
-        res.status(status).json({status: status, message: error.message});
-    })
+        .catch((error) => {
+            const status = 500;
+            res.status(status).json({ status: status, message: error.message });
+        })
 });
 
 module.exports = router;

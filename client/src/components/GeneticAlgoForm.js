@@ -35,7 +35,7 @@ class GeneticAlgoForm extends Component {
     handleSubmit(event) {
         this.toggleLoadingSpinner()
         event.preventDefault()
-        const formResult = {
+        const formData = {
             target: this.state.target,
             mutation_rate: this.state.mutationRateSlider,
             population_size: this.state.populationSize,
@@ -43,7 +43,7 @@ class GeneticAlgoForm extends Component {
             random_sample_size: this.state.randomSampleSize,
             epochs: this.state.epochs,
         }
-        axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult)
+        axios.post('http://localhost:3030/genetic-algorithm/calculate', formData)
             .then(r => {
                     this.toggleLoadingSpinner()
                     return this.props.submissionHandler(r.data.response.epochs)

@@ -1,8 +1,8 @@
 const joi = require('joi');
 
 module.exports = {
-    calculate: {
-        genetic_algorithm: {
+    genetic_algorithm: {
+        calculate: {
             body: {
                 target: joi.string().required(),
                 mutation_rate: joi.number().precision(2).min(0).max(1).required(),
