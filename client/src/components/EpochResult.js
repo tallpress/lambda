@@ -18,7 +18,7 @@ class EpochResult extends Component {
     }
 
     formatResults(array) {
-        return JSON.parse(array).join(', ')
+        return array.join(', ')
     }
 
     displayResults() {
@@ -29,11 +29,10 @@ class EpochResult extends Component {
 
     render() {
         return (
-            <div>
+            <div onClick={this.displayResults}>
                 <hr></hr>
                 <h5>Epoch {this.props.index}</h5>
                 <p>{this.formatPercentage(this.state.correct_percentage)} correct</p>
-                <button className="btn btn-info" onClick={this.displayResults}>Toggle population</button>
                 {this.state.displayClicked ? <div>{this.formatResults(this.state.results)}</div> : '' }
                 <hr></hr>
             </div>

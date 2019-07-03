@@ -36,10 +36,8 @@ class GeneticAlgoForm extends Component {
             epochs: this.state.epochs,
         }
         axios.post('http://localhost:3030/calculate/genetic-algorithm', formResult)
-        .then(response => {
-                let results = [];
-                results.push(response.data.response)
-                return this.props.submissionHandler(results)
+        .then(r => {
+                return this.props.submissionHandler(r.data.response.epochs)
             }
         );
     }
@@ -64,7 +62,7 @@ class GeneticAlgoForm extends Component {
                             name="mutationRateSlider"
                             type="range"
                             min="0"
-                            max="1"
+                            max="0.1"
                             step="0.001"
                             onChange={this.handleInputChange}
                         ></input>
