@@ -29,7 +29,7 @@ class EpochResult extends Component {
 
     render() {
         return (
-            <div onClick={this.displayResults}>
+            <div onClick={this.displayResults} className="box">
                 <hr></hr>
                 <h5>Epoch {this.props.index}</h5>
                 <p>{this.formatPercentage(this.state.correct_percentage)} correct</p>
