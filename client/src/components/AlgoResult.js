@@ -13,7 +13,7 @@ class AlgoResult extends Component {
         return (
             <div>
                 <h4>Your results</h4>
-                <p>Click on the box to expand it to see the epochs population</p>
+                <p>Click on the box to expand it in order to see the epoch's population</p>
                 {this.state.results.map((result, index) => {
                     return (<EpochResult
                         key={index+1}
