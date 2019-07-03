@@ -1,7 +1,7 @@
 #!/bin/bash
 function_name=$1
 
-rm ${function_name}.zip
+rm $(pwd)/${function_name}/${function_name}.zip
 cd ${function_name}
 
 zip -r ${function_name}.zip .

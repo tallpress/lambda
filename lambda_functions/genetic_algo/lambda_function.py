@@ -8,7 +8,7 @@ def lambda_handler(event, context):
     population_size = event['population_size']
     epochs = event['epochs']
     random_sample_size = event['random_sample_size']
-    good_sample_size = event['random_sample_size']
+    good_sample_size = event['good_sample_size']
 
     spawner = Spawner()
     generation = spawner.spawn_generation(target, population_size)
@@ -21,20 +21,25 @@ def lambda_handler(event, context):
         random_sample_size
     )
 
+    epoch_results = []
     for x in range(epochs):
         generation = genetic_algo.get_next_generation(generation)
 
-    count = 0
-    for i in generation.population:
-        if i.genes == target:
-            count+=1
+        count = 0
+        for i in generation.population:
+            if i.genes == target:
+                count+=1
+        correct_percentage = count *100 / population_size
+        epoch_results.append({
+            'correct_percentage': correct_percentage,
+            'result': generation.display()
+        })
 
-    correct_percentage = count *100 / population_size
+
 
     return {
         'statusCode': 200,
         'body': {
-            'correct_percentage': json.dumps(correct_percentage),
-            'result': json.dumps(generation.display()),
+            'epochs': json.dumps(epoch_results)
         }
     }
