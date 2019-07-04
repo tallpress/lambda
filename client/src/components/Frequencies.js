@@ -3,11 +3,11 @@ import React from 'react';
 const Frequencies = (props) => {
     return (
         <ul>
-            {props.data.map((result, index) => {
-                return (<li key={index}>
-                    {result.count}: {result.values.join(', ')}
-                </li>
-                )
+            {Object.keys(props.data).map(function (key) {
+                return <li>
+                    <b>Frequency {key}</b>
+                    <p>values: {props.data[key].join(', ')}</p>
+                </li>;
             })}
         </ul>
     );

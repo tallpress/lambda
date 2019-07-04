@@ -27,14 +27,14 @@ __lambda_functions__: contains lambdas, can deploy to aws from the dict
 ----
 
 ### To use
-Create a `.env` file with the following within
+Create a `app/.env` file with the following within
 ```
 APPLICATION_PORT=3030
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_REGION=
 ```
-You will need the aws creds
+You will need my aws creds
 
 To run the application, you will need to serve the app and client separately. Use the make commands to get set up quickly.
 
