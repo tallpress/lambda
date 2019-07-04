@@ -8,14 +8,15 @@ const router = express.Router();
 const validateCalculate = validationSchema.calculate;
 router.post('/calculate', expressJoi(validateCalculate), async (req, res) => {
     const body = req.body;
-    await lambdaGateway.geneticAlgo(
+
+    lambdaGateway.geneticAlgo(
         body.target,
         body.population_size,
         body.mutation_rate,
         body.epochs,
         body.good_sample_size,
         body.random_sample_size
-    ).then(async (response) => {
+    ).then(response => {
         const responseBody = JSON.parse(response.Payload).body;
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
