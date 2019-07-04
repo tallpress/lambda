@@ -7,9 +7,7 @@ class EpochResult extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            correct_percentage: this.props.correct_percentage,
             results: this.props.results,
-            index: this.props.index,
             displayClicked: false,
             resultsFeqs: null,
             getFreqError: false,
@@ -39,7 +37,7 @@ class EpochResult extends Component {
             return
         }
         let requestBody = {
-            to_format: this.state.results
+            to_format: this.props.results
         }
         axios.post('http://localhost:3030/genetic-algorithm/epoch/format', requestBody)
             .then(r => {
@@ -56,29 +54,17 @@ class EpochResult extends Component {
     }
 
     render() {
-        const error = (this.state.getFreqError)
-            ? <ErrorMessage />
-            : '';
-
-        const data = (this.state.displayClicked)
-            ? <div > { this.formatResults(this.state.results) }</div>
-            : ''
-
-        const frequencies = (this.state.resultsFeqs)
-            ? <Frequencies data={this.state.resultsFeqs}/>
-            : ''
-
         return (
             <div>
                 <hr></hr>
                 <div onClick={this.displayResults} className="box">
                     <h5>Epoch {this.props.index}</h5>
-                    <p>{this.formatPercentage(this.state.correct_percentage)} correct</p>
-                    {data}
+                    <p>{this.formatPercentage(this.props.correct_percentage)} correct</p>
+                    {this.state.displayClicked && <div >{this.formatResults(this.props.results)}</div>}
                 </div>
                 <button onClick={this.getFreqs} className="btn btn-secondary" disabled={this.state.resultsFeqs}>Show frequencies</button>
-                {frequencies}
-                {error}
+                {this.state.resultsFeqs && <Frequencies data={this.state.resultsFeqs} />}
+                {this.state.getFreqError && <ErrorMessage />}
                 <hr></hr>
             </div>
         )

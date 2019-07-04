@@ -16,9 +16,6 @@ class App extends Component {
 
     handleFormSubmission(data) {
         this.setState({
-            formResult: null,
-        })
-        this.setState({
             formResult: data,
             formError: false
         });
@@ -32,14 +29,6 @@ class App extends Component {
     }
 
     render() {
-        const algoResult = (this.state.formResult)
-            ? <AlgoResult data={this.state.formResult}/>
-            : '';
-
-        const errorMessage = (this.state.formError)
-            ? <ErrorMessage />
-            : '';
-
         return (
         <div className="App">
             <h1>Genetic algorithm</h1>
@@ -52,8 +41,8 @@ class App extends Component {
                 submissionHandler={this.handleFormSubmission}
                 submissionErrorHandler={this.handleFormError}
             />
-            {algoResult}
-            {errorMessage}
+            {this.state.formResult && <AlgoResult data={this.state.formResult} />}
+            {this.state.formError && <ErrorMessage />}
         </div>
         );
     }
