@@ -7,4 +7,4 @@ build-client:
 start-client:
 	cd client && npm start
 test-lambda:
-	docker-compose -f lambda_functions/docker/docker-compose.test.yml up --build
+	docker-compose -f lambda_functions/docker-compose.test.yml up --build

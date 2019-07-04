@@ -5,7 +5,7 @@ services:
             context: ./
             dockerfile: Dockerfile
         volumes:
-            - ../tests/:/usr/src/tests
-            - ../genetic_algo:/usr/src/genetic_algo
+            - ./tests/:/usr/src/tests
+            - ./genetic_algo:/usr/src/genetic_algo
         network_mode: bridge
         entrypoint: ./entrypoint.sh

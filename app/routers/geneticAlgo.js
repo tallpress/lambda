@@ -4,8 +4,8 @@ const express = require('express'),
     expressJoi = require('express-joi-validator');
 
 const router = express.Router();
-const validateCalculate = validationSchema.calculate;
 
+const validateCalculate = validationSchema.calculate;
 router.post('/calculate', expressJoi(validateCalculate), controller.calculate)
 
 router.post('/epoch/format', controller.epochFormat);
