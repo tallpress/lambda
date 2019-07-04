@@ -1,10 +1,10 @@
 # Lambda Genetic Algorithm with Node.js backend
 
-First time using Node.js and building AWS lambda functions. Aim was to get to grips with the basics of Node.js and building lambda functions, which I did so by building a lambda function that is called from a Node.js backend. Also aimed to make a genetic algo, I wrote a while ago, a bit more OOP in the process of putting it up on lambda. The endpoint has validation on to minimise sending faulty requests to the lambda.
+First time using Node.js and building AWS lambda functions. Aim was to get to grips with the basics of Node.js and building lambda functions, which I did so by building a lambda function that is called from a Node.js backend. The calculate endpoint has validation on to minimise sending excessive/faulty requests to the lambda.
 
-I've played around with spinning up a python 2.7 docker container to run unit tests in, in order to simulate the lambda environment in which the python code is ran. Note, wip and very much rough round the edges. To run tests, `make test`
+I've played around with spinning up a python 2.7 docker container to run unit tests in, in order to simulate the lambda environment in which the python code is ran. Note, very much a WIP. To run tests, `make test`
 
-Next steps: add more unit tests and improve the testing set up. Build react front-end to make interacting with the lambda a bit nicer.
+Next steps: add more unit tests to the lambda, and test node application
 
 ----
 
@@ -15,9 +15,7 @@ __app__: contains node.js application
 
 __client__: contains react frontend application
 
-__docker__: contains docker related files for testing the lambda function
-
-__lambda_functions__: contains lambdas, can deploy to aws from the dict
+__lambda_functions__: contains lambdas, can deploy to aws from the dict. Contains contianer to test
 
 ----
 
