@@ -16,6 +16,9 @@ class App extends Component {
 
     handleFormSubmission(data) {
         this.setState({
+            formResult: null,
+        })
+        this.setState({
             formResult: data,
             formError: false
         });
@@ -42,7 +45,8 @@ class App extends Component {
             <h1>Genetic algorithm</h1>
             <br></br>
             <p>Fill the hyper-parameters into the form below, hit submit and wait for the result of the lambda function.
-            The result will render the list of epochs, and for each one you can open up the results of that epcoh.
+            The result will render the list of epochs, and for each one you can open up the results of that epcoh. To start
+            try 20 epochs of population 100, with a good:random sample ratio of 6:1, mutation rate of ~0.05, and the target as your first name.
             </p>
             <GeneticAlgoForm
                 submissionHandler={this.handleFormSubmission}

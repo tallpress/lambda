@@ -5,7 +5,7 @@ class AlgoResult extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: this.props.data,
+            algoResults: this.props.data,
         }
     }
 
@@ -13,8 +13,9 @@ class AlgoResult extends Component {
         return (
             <div>
                 <h4>Your results</h4>
-                <p>Click on the box to expand it in order to see the epoch's population</p>
-                {this.state.results.map((result, index) => {
+                <p>Click on the epoch to expand it in order to see the epoch's raw population</p>
+                <p>You can also view the frequency of results in an epoch, in order to understand the population's make up.</p>
+                {this.state.algoResults.map((result, index) => {
                     return (<EpochResult
                         key={index+1}
                         index={index+1}

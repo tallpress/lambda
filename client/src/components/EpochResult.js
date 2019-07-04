@@ -21,7 +21,7 @@ class EpochResult extends Component {
     }
 
     formatPercentage(float) {
-        return float * 100 + '%';
+        return float + '%';
     }
 
     formatResults(array) {
