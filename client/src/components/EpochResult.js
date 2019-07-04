@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage'
+import Frequencies from './Frequencies'
 
 class EpochResult extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class EpochResult extends Component {
         this.getFreqs = this.getFreqs.bind(this)
         this.displayResults = this.displayResults.bind(this)
         this.formatResults = this.formatResults.bind(this)
+        this.formatPercentage = this.formatPercentage.bind(this)
     }
 
     formatPercentage(float) {
@@ -24,21 +26,6 @@ class EpochResult extends Component {
 
     formatResults(array) {
         return array.join(', ')
-    }
-
-    formatFreqs(freqs) {
-        // let string = '';
-        // freqs.forEach(element => {
-        //      element.count + ': ' + element.values.join(', ')
-        // });
-        return (
-            // <ul>
-            freqs.map(element => {
-                <li>{element.count}: {element.values}</li>
-            })
-            // </ul>
-
-        )
     }
 
     displayResults() {
@@ -77,15 +64,8 @@ class EpochResult extends Component {
             ? <div > { this.formatResults(this.state.results) }</div>
             : ''
 
-        const freqs = (this.state.resultsFeqs)
-            ? <ul>
-                {this.state.resultsFeqs.map((result) => {
-                    return (<li>
-                        {result.count}: {result.values.join(', ')}
-                    </li>
-                    )
-                })}
-            </ul>
+        const frequencies = (this.state.resultsFeqs)
+            ? <Frequencies data={this.state.resultsFeqs}/>
             : ''
 
         return (
@@ -96,9 +76,8 @@ class EpochResult extends Component {
                     <p>{this.formatPercentage(this.state.correct_percentage)} correct</p>
                     {data}
                 </div>
-                {this.state.resultsFeqs ? <div>{this.resultsFeqs}</div> : ''}
-                <button onClick={this.getFreqs}>Get frequencies</button>
-                {freqs}
+                <button onClick={this.getFreqs} className="btn btn-secondary" disabled={this.state.resultsFeqs}>Show frequencies</button>
+                {frequencies}
                 {error}
                 <hr></hr>
             </div>

@@ -13,6 +13,8 @@ Next steps: add more unit tests and improve the testing set up. Build react fron
 
 __app__: contains node.js application
 
+__client__: contains react frontend application
+
 __docker__: contains docker related files for testing the lambda function
 
 __lambda_functions__: contains lambdas, can deploy to aws from the dict
@@ -21,26 +23,27 @@ __lambda_functions__: contains lambdas, can deploy to aws from the dict
 
 ### Requirements
 - node
-- aws creds
+- aws creds for lambda
 ----
 
 ### To use
 Create a `.env` file with the following within
 ```
-APPLICATION_PORT={CHOOSE}
+APPLICATION_PORT=3030
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_REGION=
 ```
 You will need the aws creds
 
-Run `make build && make start`
+To run the application, you will need to serve the app and client separately. Use the make commands to get set up quickly.
 
+In one terminal window run `make build-app && make start-app`  and in another run `make build-client && make start-client`
+
+locate to `localhost:3000` and you should be good to go
 
 ---
 
-###### POST /calculate/genetic-algorithm
-Body:
 - **target** (string) the target word the algorithm is working towards.
 - **population_size** (int) size of population in a generation
 - **random_sample_size** (int) numnber of random individuals to select from a generation
@@ -53,7 +56,7 @@ recommened starting values
 population_size:1000
 mutation_rate:0.005
 epochs:26
-target:{YOUR_NAME}
+target:testing
 random_sample_size:1
 good_sample_size:4
 ```
@@ -70,6 +73,6 @@ good_sample_size:4
 
 ---
 
-### To run tests
+### To run tests on lambda run
 
-`make test`
+`make test-lambda`
