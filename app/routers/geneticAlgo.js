@@ -1,6 +1,6 @@
 const express = require('express'),
     validationSchema = require('./helpers/validationSchemas').genetic_algorithm,
-    controller = require('../controllers/geneticAlgo')
+    controller = require('../controllers/geneticAlgoController')
     expressJoi = require('express-joi-validator');
 
 const router = express.Router();
